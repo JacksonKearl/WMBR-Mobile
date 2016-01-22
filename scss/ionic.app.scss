@@ -21,3 +21,81 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.with-main-header {
+  margin-top: 80px;
+}
+
+.header {
+  margin: 5px 10px;
+  border-bottom: 3px solid #03522b;
+  position: relative;
+  top:-20px;
+
+  .play-stream {
+    position: absolute;;
+    top:40px;
+    right:5px;
+    color: #03522b;
+  }
+
+  .show-menu {
+    position:relative;
+    top:40px;
+    left: 5px;
+    color: #03522b;
+  }
+  img {
+    width: 60%;
+    margin: -5px 20%;
+  }
+}
+
+
+
+.info-box {
+  margin: 10px;
+
+  .details-box {
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+    background-color: rgb(244,244,244);
+  }
+
+  .title-box {
+    color: white;
+    height: 20px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bolder;
+  }
+  .show-title {
+    font-weight: bold;
+
+  }
+  .current-dj {
+
+  }
+  .show-description {
+
+  }
+
+}
+
+.purple { .details-box {border-color: #5544BB;} .title-box {background-color: #5544BB;}}
+.red    { .details-box {border-color: #CC4444;} .title-box {background-color: #CC4444;}}
+.orange { .details-box {border-color: #DD7700;} .title-box {background-color: #DD7700;}}
+.teal   { .details-box {border-color: #449999;} .title-box {background-color: #449999;}}
+.pink   { .details-box {border-color: #AA5577;} .title-box {background-color: #AA5577;}}
+.blue   { .details-box {border-color: #33AACC;} .title-box {background-color: #33AACC;}}
+
+

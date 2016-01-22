@@ -1,5 +1,5 @@
 {
-  "name": "WMBR-Mobile",
+  "name": "WMBR",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",

@@ -1,7 +1,7 @@
 {
-  "name": "wmbr-mobile",
+  "name": "wmbr",
   "version": "1.1.1",
-  "description": "WMBR-Mobile: An Ionic project",
+  "description": "WMBR:Mobile interface for WMBR, Cambridge.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

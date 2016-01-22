@@ -41,15 +41,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('HomeCtrl', function($scope) {
+  $.ajaxSetup({
+    scriptCharset: "utf-8", //or "ISO-8859-1"
+    contentType: "application/json; charset=utf-8"
+  });
+
+  $.getJSON('http://whateverorigin.org/get?url=' +
+    encodeURIComponent('http://wmbr.org') + '&callback=?',
+    function (data) {
+        var nowPlaying = $(data.contents).find("#now_on_the_air").text().split("\n");
+        $scope.nowPlaying = {showTitle:nowPlaying[1],
+                             currentDJ:nowPlaying[2],
+                       showDescription:nowPlaying[4]};
+
+        console.log($(data.contents).find("#recent_plays").text());
+
+        //If the expected response is text/plain
+
+        //If the expected response is JSON
+        //var response = $.parseJSON(data.contents);
+      });
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

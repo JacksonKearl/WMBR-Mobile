@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true" view-title="Home">
+  <div class="header">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
+    <img src="img/wmbr_top.png"/>
+    <button class="button button-icon icon ion-headphone play-stream"></button>
+
+    <!-- <button menu-toggle="right" class="button button-icon icon ion-navicon"></button> -->
+
+  </div>
+  <ion-content class="with-main-header">
+    <div class="info-box purple">
+      <div class="title-box">Now On The Air</div>
+      <div class="details-box">
+        <p class="show-title">{{nowPlaying.showTitle}}</p>
+        <p class="current-dj">{{nowPlaying.currentDJ}}</p>
+        <p class="show-description">{{nowPlaying.showDescription}}</p>
+      </div>
+    </div>
+    <div class="info-box red">
+      <div class="title-box">Recently Played</div>
+      <div class="details-box">
+        To be implemented...
+      </div>
+    </div>
+    <div class="info-box pink">
+      <div class="title-box">Upcoming Special Events</div>
+      <div class="details-box">
+        To be implemented...
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
