@@ -1,13 +1,22 @@
-<ion-view hide-nav-bar="true" view-title="Home">
+<ion-view hide-nav-bar="true" view-title="Home" ng-controller="HomeCtrl">
   <div class="header">
     <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
     <img src="img/wmbr_top.png"/>
-    <button class="button button-icon icon ion-headphone play-stream"></button>
 
-    <!-- <button menu-toggle="right" class="button button-icon icon ion-navicon"></button> -->
+    <button ng-if="!player.playing"
+            class="button button-icon icon ion-headphone play-stream"
+            ng-click="player.toggleStream()">
+            </button>
+
+    <button ng-if="player.playing"
+            class="button button-icon icon ion-pause play-stream pause-button"
+            ng-click="player.toggleStream()">
+            </button>
 
   </div>
   <ion-content class="with-main-header">
+    <ion-refresher on-refresh="reload()"> </ion-refresher>
+
     <div class="info-box purple">
       <div class="title-box">Now On The Air</div>
       <div class="details-box">
@@ -19,13 +28,35 @@
     <div class="info-box red">
       <div class="title-box">Recently Played</div>
       <div class="details-box">
-        To be implemented...
+        <p ng-if="haveHistory" ng-repeat="song in recentlyPlayed">
+          <span class="song-time">{{song.time}} </span>
+           <b>{{song.artist}}</b>: {{song.name}}
+        </p>
+        <p ng-if="!haveHistory">
+          No current playlist.
+          <br><br>
+          <a ng-click="goToPage('http://track-blaster.com/wmbr/');">see older playlists</a>
+        </p>
+      </div>
+    </div>
+    <div class="info-box blue">
+      <div class="title-box">Recent Tweets</div>
+      <div id="twitter-box" class="details-box">
+        Loading...
       </div>
     </div>
     <div class="info-box pink">
       <div class="title-box">Upcoming Special Events</div>
       <div class="details-box">
-        To be implemented...
+        <div ng-repeat="event in upcomingEvents">
+          <p class="event-time">
+            {{event.time}}
+          </p>
+          <p class="event-title">
+            {{event.title}}
+          </p>
+          <div ng-if="!$last" class="hrule"></div>
+        </div>
       </div>
     </div>
   </ion-content>

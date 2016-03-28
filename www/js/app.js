@@ -32,39 +32,40 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.home', {
+    url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+  .state('app.info', {
+    url: '/info',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/info.html'
       }
-    })
-    .state('app.home', {
-      url: '/home',
+    }
+  })
+
+  .state('app.playlists', {
+      url: '/playlists',
       views: {
         'menuContent': {
-          templateUrl: 'templates/home.html',
-          controller: 'HomeCtrl'
+          templateUrl: 'templates/playlists.html'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+
+  .state('app.schedule', {
+    url: '/schedule',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/schedule.html',
       }
     }
   });

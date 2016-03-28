@@ -1,20 +1,4 @@
 @charset "UTF-8";
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9731,12 +9715,15 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+body {
+  font-family: Avenir; }
+
 .with-main-header {
-  margin-top: 80px; }
+  border-top: 3px solid #03522b;
+  margin-top: 71px; }
 
 .header {
   margin: 5px 10px;
-  border-bottom: 3px solid #03522b;
   position: relative;
   top: -20px; }
   .header .play-stream {
@@ -9753,8 +9740,19 @@ a.button {
     width: 60%;
     margin: -5px 20%; }
 
+.separated p {
+  padding-bottom: 5px; }
+
 .info-box {
   margin: 10px; }
+  .info-box .tweet_time, .info-box .event-time, .info-box .current-dj, .info-box .song-time {
+    font-size: 8pt;
+    color: #555; }
+  .info-box .current-dj {
+    margin-top: -4px;
+    margin-bottom: 4px; }
+  .info-box p {
+    margin-bottom: 0; }
   .info-box .details-box {
     border-style: solid;
     border-width: 1px;
@@ -9776,11 +9774,17 @@ a.button {
 .purple .title-box {
   background-color: #5544BB; }
 
+.purple a {
+  color: #5544BB; }
+
 .red .details-box {
   border-color: #CC4444; }
 
 .red .title-box {
   background-color: #CC4444; }
+
+.red a {
+  color: #CC4444; }
 
 .orange .details-box {
   border-color: #DD7700; }
@@ -9788,11 +9792,17 @@ a.button {
 .orange .title-box {
   background-color: #DD7700; }
 
+.orange a {
+  color: #DD7700; }
+
 .teal .details-box {
   border-color: #449999; }
 
 .teal .title-box {
   background-color: #449999; }
+
+.teal a {
+  color: #449999; }
 
 .pink .details-box {
   border-color: #AA5577; }
@@ -9800,8 +9810,53 @@ a.button {
 .pink .title-box {
   background-color: #AA5577; }
 
+.pink a {
+  color: #AA5577; }
+
 .blue .details-box {
   border-color: #33AACC; }
 
 .blue .title-box {
   background-color: #33AACC; }
+
+.blue a {
+  color: #33AACC; }
+
+.hrule {
+  border-bottom: 1px solid #999999;
+  margin-top: 3px;
+  margin-bottom: 2px; }
+
+.side-menu {
+  padding-top: 90px;
+  padding-right: 0;
+  background-color: #03522b;
+  padding-left: 15px; }
+  .side-menu .radio-img {
+    width: 100px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px; }
+  .side-menu .wmbr-logo {
+    color: white;
+    width: 150px;
+    position: absolute;
+    top: 30px;
+    left: 25px; }
+  .side-menu ion-list {
+    background-color: inherit; }
+  .side-menu ion-item {
+    background-color: inherit;
+    font-size: 22px;
+    color: white;
+    padding-right: 0;
+    border: none;
+    border-top: 1px solid #033c10; }
+  .side-menu ion-item:last-of-type {
+    border-bottom: 1px solid #033c10; }
+  .side-menu .item-complex .item-content, .side-menu .item {
+    background-color: inherit; }
+
+.pause-button {
+  margin-right: 3px;
+  margin-top: 2px; }

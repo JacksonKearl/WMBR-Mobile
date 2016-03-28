@@ -1,25 +1,17 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
+$purple: #5544BB;
+$red:    #CC4444;
+$orange: #DD7700;
+$teal:   #449999;
+$pink:   #AA5577;
+$blue:   #33AACC;
+$green:  #03522b;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
 
 
 @mixin centerer {
@@ -29,13 +21,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   transform: translate(-50%, -50%);
 }
 
+body {
+  font-family: Avenir;
+}
 .with-main-header {
-  margin-top: 80px;
+  border-top: 3px solid #03522b;
+  margin-top: 71px;
 }
 
 .header {
   margin: 5px 10px;
-  border-bottom: 3px solid #03522b;
+  //border-bottom: 3px solid #03522b;
   position: relative;
   top:-20px;
 
@@ -58,10 +54,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
-
+.separated {
+  p {
+    padding-bottom: 5px;
+  }
+}
 
 .info-box {
   margin: 10px;
+
+  .tweet_time, .event-time, .current-dj, .song-time {
+    font-size: 8pt;
+    color: #555;
+  }
+
+  .current-dj {
+    margin-top: -4px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
 
   .details-box {
     border-style: solid;
@@ -91,11 +105,77 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 }
 
-.purple { .details-box {border-color: #5544BB;} .title-box {background-color: #5544BB;}}
-.red    { .details-box {border-color: #CC4444;} .title-box {background-color: #CC4444;}}
-.orange { .details-box {border-color: #DD7700;} .title-box {background-color: #DD7700;}}
-.teal   { .details-box {border-color: #449999;} .title-box {background-color: #449999;}}
-.pink   { .details-box {border-color: #AA5577;} .title-box {background-color: #AA5577;}}
-.blue   { .details-box {border-color: #33AACC;} .title-box {background-color: #33AACC;}}
+@mixin block($color) {
+  .details-box {
+    border-color: $color;
+  }
+  .title-box {
+    background-color: $color;
+  }
+  a {
+    color: $color;
+  }
+
+}
+
+.purple { @include block($purple);}
+.red    { @include block($red);}
+.orange { @include block($orange);}
+.teal   { @include block($teal);}
+.pink   { @include block($pink);}
+.blue   { @include block($blue);}
+
+.hrule {
+  border-bottom:1px solid #999999;
+  margin-top: 3px;
+  margin-bottom:2px;
+}
 
 
+.side-menu {
+  padding-top: 90px;
+  padding-right: 0;
+  background-color: $green;
+  padding-left: 15px;
+
+  .radio-img {
+    width: 100px;
+    position: absolute;
+    bottom:50px;
+    left:50px;
+  }
+
+  .wmbr-logo {
+    color: white;
+    width: 150px;
+    position: absolute;
+    top:30px;
+    left:25px;
+  }
+
+  ion-list {
+    background-color: inherit;
+  }
+  ion-item {
+    background-color: inherit;
+    font-size: 22px;
+    color: white;
+    padding-right: 0;
+    border: none;
+    border-top: 1px solid rgb(3, 60, 16);
+  }
+
+  ion-item:last-of-type{
+    border-bottom: 1px solid rgb(3, 60, 16);
+  }
+
+  .item-complex .item-content, .item {
+    background-color: inherit;
+  }
+}
+
+.pause-button {
+  margin-right:3px;
+  margin-top: 2px;
+
+}

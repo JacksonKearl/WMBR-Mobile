@@ -12,25 +12,25 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
+  <ion-side-menu side="left" width="200" class="side-menu">
+      <img class="wmbr-logo" src="/img/wmbr_top white.png">
+      <img class="radio-img" src="/img/track-blaster-logo.png">
       <ion-list>
         <ion-item menu-close href="#/app/home">
           Home
         </ion-item>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item menu-close href="#/app/info">
+          Station Info
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item menu-close href="#/app/playlists">
+          Playlists
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item menu-close href="#/app/schedule">
+          Schedule
+        </ion-item>
+        <ion-item menu-close href="#/app/archives">
+          Archives
         </ion-item>
       </ion-list>
-    </ion-content>
   </ion-side-menu>
 </ion-side-menus>

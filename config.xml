@@ -7,7 +7,7 @@
   <author email="jkearl@mit.edu" href="http://wmbr.org">
       Jackson Kearl
     </author>
-  <content src="http://18.189.119.110:8100" original-src="index.html"/>
+  <content src="http://18.189.97.203:8100" original-src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
