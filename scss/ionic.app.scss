@@ -16,9 +16,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 @mixin centerer {
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 
 body {
@@ -31,7 +30,7 @@ body {
 
 .header {
   margin: 5px 10px;
-  //border-bottom: 3px solid #03522b;
+  margin-top: 0px;
   position: relative;
   top:-20px;
 
@@ -49,8 +48,10 @@ body {
     color: #03522b;
   }
   img {
-    width: 60%;
-    margin: -5px 20%;
+    height: 45px;
+    @include centerer;
+    margin-top: 40px;
+    //margin: -5px 20%;
   }
 }
 
@@ -63,9 +64,21 @@ body {
 .info-box {
   margin: 10px;
 
-  .tweet_time, .event-time, .current-dj, .song-time {
+  .tweet_time, .event-time, .current-dj, .song-time, .small {
     font-size: 8pt;
     color: #555;
+  }
+
+  .play-stream {
+    position: absolute;
+    right:15px;
+    color: #03522b;
+  }
+
+  .play-pause-stream {
+    position: absolute;
+    right:55px;
+    color: #03522b;
   }
 
   .current-dj {
@@ -133,15 +146,20 @@ body {
 
 
 .side-menu {
-  padding-top: 90px;
+  padding-top: 120px;
   padding-right: 0;
   background-color: $green;
   padding-left: 15px;
 
+  .b {
+    font-weight: bold;
+    font-size: 19px;
+  }
+
   .radio-img {
     width: 100px;
     position: absolute;
-    bottom:50px;
+    top:25px;
     left:50px;
   }
 
@@ -149,7 +167,7 @@ body {
     color: white;
     width: 150px;
     position: absolute;
-    top:30px;
+    top:25px;
     left:25px;
   }
 
@@ -158,7 +176,7 @@ body {
   }
   ion-item {
     background-color: inherit;
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     padding-right: 0;
     border: none;
@@ -177,5 +195,32 @@ body {
 .pause-button {
   margin-right:3px;
   margin-top: 2px;
+}
 
+.controller-buttons {
+  @include centerer;
+  button {
+    color: white;
+    margin: 5px;
+  }
+  .play-pause-stream {
+    position: absolute;
+    color: white;
+    left: -70px;
+  }
+  .play-stream {
+    position: absolute;
+    color: white;
+    right: -70px;
+  }
+  margin-top:100px;
+}
+
+.controller-name {
+  @include centerer;
+  text-align: center;
+  width: 200px;
+  color: white;
+  font-size: 18pt;
+  margin-top: 30px;
 }

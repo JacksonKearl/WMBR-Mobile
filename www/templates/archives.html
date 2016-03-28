@@ -1,0 +1,50 @@
+<ion-view hide-nav-bar="true" view-title="Home" ng-controller="ArchivesCtrl">
+  <div class="header">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
+    <img src="img/wmbr_top.png"/>
+
+    <button ng-if="!(player.playing === 'http://wmbr.org/WMBR_live_128.m3u' && !player.audio.paused)"
+            class="button button-icon icon ion-headphone play-stream"
+            ng-click="player.toggleStream('http://wmbr.org/WMBR_live_128.m3u', 'Live Stream')">
+            </button>
+
+    <button ng-if="player.playing === 'http://wmbr.org/WMBR_live_128.m3u' && !player.audio.paused"
+            class="button button-icon icon ion-stop play-stream"
+            ng-click="player.toggleStream('http://wmbr.org/WMBR_live_128.m3u')">
+            </button>
+
+  </div>
+  <ion-content class="with-main-header">
+    <ion-refresher on-refresh="reload()" spinner="lines"> </ion-refresher>
+    <div class="info-box purple">
+      <div class="title-box">Archives</div>
+      <div class="details-box">
+        <div ng-repeat="archive in archives">
+          <button ng-if="!$last && player.playing !== archive.url"
+                  class="button button-icon icon ion-headphone play-stream"
+                  ng-click="player.toggleStream(archive.url, archive.name)">
+                  </button>
+
+          <button ng-if="!$last && player.playing === archive.url"
+                  class="button button-icon icon ion-stop play-stream"
+                  ng-click="player.toggleStream(archive.url)">
+                  </button>
+
+          <button ng-if="!$last && player.playing === archive.url && player.audio.paused"
+                  class="button button-icon icon ion-play play-pause-stream"
+                  ng-click="player.playPauseStream()">
+                  </button>
+
+          <button ng-if="!$last && player.playing === archive.url && !player.audio.paused"
+                  class="button button-icon icon ion-pause play-pause-stream"
+                  ng-click="player.playPauseStream()">
+                  </button>
+
+          <p class="small"> {{archive.time}} </p>
+          {{archive.name}}
+          <div ng-if="!$last" class="hrule"></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -46,7 +46,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/info',
     views: {
       'menuContent': {
-        templateUrl: 'templates/info.html'
+        templateUrl: 'templates/info.html',
+        controller: 'InfoCtrl'
       }
     }
   })
@@ -55,7 +56,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/playlists',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html'
+          templateUrl: 'templates/playlists.html',
+          controller: 'PlaylistsCtrl'
         }
       }
     })
@@ -66,9 +68,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/schedule.html',
+        controller: 'ScheduleCtrl'
       }
     }
-  });
+  })
+
+  .state('app.archives', {
+    url: '/archives',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/archives.html',
+        controller: 'ArchivesCtrl'
+      }
+    }
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

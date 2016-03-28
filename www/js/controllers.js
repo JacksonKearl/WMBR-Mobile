@@ -7,21 +7,46 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  $rootScope.setPage = function(page) {
+    $rootScope.page = page;
+  }
+  $rootScope.page = "home";
 
   $rootScope.player = {
-    playing : false,
-    audio : new Audio('http://wmbr.org/WMBR_live_128.m3u'),
-    toggleStream : function() {
-      if ($rootScope.player.playing) {
-        $rootScope.player.audio.pause();
-        $rootScope.player.playing = false;
-      } else {
+    playing : "",
+    name: "",
+    audio : null,
+    toggleStream : function(url, name) {
+      if (name && name.length > 30) {
+        name = name.substring(0,25) + "...";
+      }
+      if (!url) url = $rootScope.player.playing;
+      if ($rootScope.player.audio == null ) {
+        $rootScope.player.audio = new Audio(url);
         $rootScope.player.audio.play();
-        $rootScope.player.playing = true;
+        $rootScope.player.name = name;
+        $rootScope.player.playing = url
+      } else if (url !== $rootScope.player.playing) {
+        $rootScope.player.toggleStream($rootScope.player.playing);
+        $rootScope.player.toggleStream(url, name);
+      } else {
+        $rootScope.player.playing = null
+        $rootScope.player.audio.pause();
+        $rootScope.player.audio.remove();
+        $rootScope.player.audio.src = "";
+        $rootScope.player.audio = null;
+      }
+    },
+    playPauseStream : function () {
+      if ($rootScope.player.audio) {
+        if ($rootScope.player.audio.paused) {
+          $rootScope.player.audio.play();
+        } else {
+          $rootScope.player.audio.pause();
+        }
       }
     }
   };
-
 
 })
 
@@ -39,17 +64,19 @@ angular.module('starter.controllers', [])
       encodeURIComponent('http://wmbr.org/dynamic.xml') + '&callback=?',
       function (data) {
           var xmlDoc = data.contents.replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&')
-          var are_playing = true;
-          if (!are_playing) {
-            // handle case when off air
-          }
+
 
           var nowOnTheAirLines = $(xmlDoc).find('wmbr_show').text().split('\n');
-
-          $scope.nowPlaying = {showTitle:nowOnTheAirLines[0],
-                               currentDJ:nowOnTheAirLines[2],
-                         showDescription:nowOnTheAirLines[4]};
-
+          var are_playing = nowOnTheAirLines[2].indexOf("Currently off the air") === -1;
+          if (!are_playing) {
+            $scope.nowPlaying = {showTitle:"Oh No!",
+                                 currentDJ:"",
+                           showDescription:"WMBR is off the air - see you tomorrow!"};
+          } else {
+            $scope.nowPlaying = {showTitle:nowOnTheAirLines[0],
+                                 currentDJ:nowOnTheAirLines[2],
+                           showDescription:nowOnTheAirLines[4]};
+          }
           var recentlyPlayedLines = $(xmlDoc).find('wmbr_plays').text();
 
           $scope.haveHistory = recentlyPlayedLines.indexOf("no current playlist") === -1;
@@ -72,6 +99,25 @@ angular.module('starter.controllers', [])
               $scope.recentlyPlayed.push(songPlayData);
 
           }
+          $scope.$broadcast('scroll.refreshComplete');
+      });
+  };
+
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.reload();
+  });
+
+  setInterval($scope.reload, 45000);
+
+})
+
+.controller('InfoCtrl', function($scope, $rootScope, $stateParams) {
+
+  $scope.reload = function() {
+    $.getJSON('http://whateverorigin.org/get?url=' +
+      encodeURIComponent('http://wmbr.org/dynamic.xml') + '&callback=?',
+      function (data) {
+          var xmlDoc = data.contents.replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&')
 
           var twitterHTML = $(xmlDoc).find('wmbr_twitter').html()
             .replace(/_blank/g,"_system")
@@ -96,17 +142,53 @@ angular.module('starter.controllers', [])
         });
         $scope.$broadcast('scroll.refreshComplete');
 
-
-
   };
-  
+
+  $scope.reload();
+
   $scope.$on('$ionicView.enter', function(e) {
     $scope.reload();
   });
-
-  setInterval($scope.reload, 45000);
-
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistsCtrl', function($scope, $rootScope, $stateParams) {
+  $scope.$on('$ionicView.enter', function(e) {
+    //$scope.reload();
+  });
+})
+
+.controller('ScheduleCtrl', function($scope, $rootScope, $stateParams) {
+  $scope.$on('$ionicView.enter', function(e) {
+    //$scope.reload();
+  });
+})
+
+.controller('ArchivesCtrl', function($scope, $rootScope, $stateParams) {
+  $scope.archives = [{name:"Now Loading...", time:"", url:""}]
+  $scope.reload = function() {
+    $.getJSON('http://whateverorigin.org/get?url=' +
+      encodeURIComponent('http://wmbr.org/cgi-bin/arch') + '&callback=?',
+      function (data) {
+        var len = 0;
+        $(data.contents).find('tr').each( function(index) {
+          $($(this).html()).find('td').each(function (index) {
+            if($(this).text().indexOf("MP3") > -1) {
+              $scope.archives[len].url = $(this).children().first().attr('href')
+              $scope.archives.push({name:"", time:"", url:""})
+              len++;
+            } else {
+            $scope.archives[len].name = $scope.archives[len].time;
+            $scope.archives[len].time = $(this).text();
+            }
+          })
+        });
+        $scope.archives[len].name = "No more archives avaialble."
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+  };
+
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.reload();
+  });
 });
+

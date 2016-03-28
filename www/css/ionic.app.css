@@ -9724,6 +9724,7 @@ body {
 
 .header {
   margin: 5px 10px;
+  margin-top: 0px;
   position: relative;
   top: -20px; }
   .header .play-stream {
@@ -9737,17 +9738,28 @@ body {
     left: 5px;
     color: #03522b; }
   .header img {
-    width: 60%;
-    margin: -5px 20%; }
+    height: 45px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 40px; }
 
 .separated p {
   padding-bottom: 5px; }
 
 .info-box {
   margin: 10px; }
-  .info-box .tweet_time, .info-box .event-time, .info-box .current-dj, .info-box .song-time {
+  .info-box .tweet_time, .info-box .event-time, .info-box .current-dj, .info-box .song-time, .info-box .small {
     font-size: 8pt;
     color: #555; }
+  .info-box .play-stream {
+    position: absolute;
+    right: 15px;
+    color: #03522b; }
+  .info-box .play-pause-stream {
+    position: absolute;
+    right: 55px;
+    color: #03522b; }
   .info-box .current-dj {
     margin-top: -4px;
     margin-bottom: 4px; }
@@ -9828,26 +9840,29 @@ body {
   margin-bottom: 2px; }
 
 .side-menu {
-  padding-top: 90px;
+  padding-top: 120px;
   padding-right: 0;
   background-color: #03522b;
   padding-left: 15px; }
+  .side-menu .b {
+    font-weight: bold;
+    font-size: 19px; }
   .side-menu .radio-img {
     width: 100px;
     position: absolute;
-    bottom: 50px;
+    top: 25px;
     left: 50px; }
   .side-menu .wmbr-logo {
     color: white;
     width: 150px;
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 25px; }
   .side-menu ion-list {
     background-color: inherit; }
   .side-menu ion-item {
     background-color: inherit;
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     padding-right: 0;
     border: none;
@@ -9860,3 +9875,30 @@ body {
 .pause-button {
   margin-right: 3px;
   margin-top: 2px; }
+
+.controller-buttons {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 100px; }
+  .controller-buttons button {
+    color: white;
+    margin: 5px; }
+  .controller-buttons .play-pause-stream {
+    position: absolute;
+    color: white;
+    left: -70px; }
+  .controller-buttons .play-stream {
+    position: absolute;
+    color: white;
+    right: -70px; }
+
+.controller-name {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  width: 200px;
+  color: white;
+  font-size: 18pt;
+  margin-top: 30px; }

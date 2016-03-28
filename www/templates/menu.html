@@ -1,9 +1,7 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
+      <ion-nav-back-button></ion-nav-back-button>
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -13,24 +11,41 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left" width="200" class="side-menu">
-      <img class="wmbr-logo" src="/img/wmbr_top white.png">
-      <img class="radio-img" src="/img/track-blaster-logo.png">
+      <img class="radio-img" src="img/track-blaster-logo.png">
       <ion-list>
-        <ion-item menu-close href="#/app/home">
+        <ion-item menu-close ng-class="{b : page === 'home'}" ng-click="setPage('home')" href="#/app/home">
           Home
         </ion-item>
-        <ion-item menu-close href="#/app/info">
-          Station Info
+        <ion-item menu-close ng-class="{b : page === 'info'}" ng-click="setPage('info')" href="#/app/info">
+          Station News
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
+        <ion-item menu-close ng-class="{b : page === 'playlists'}" ng-click="setPage('playlists')" href="#/app/playlists">
           Playlists
         </ion-item>
-        <ion-item menu-close href="#/app/schedule">
+        <ion-item menu-close ng-class="{b : page === 'schedule'}" ng-click="setPage('schedule')" href="#/app/schedule">
           Schedule
         </ion-item>
-        <ion-item menu-close href="#/app/archives">
+        <ion-item menu-close ng-class="{b : page === 'archives'}" ng-click="setPage('archives')" href="#/app/archives">
           Archives
         </ion-item>
       </ion-list>
+      <div ng-if="player.playing" class="controller-name">
+        <span style="font-size:12pt;color:grey;">Now Playing:</span><br>
+        {{player.name}}
+      </div>
+
+      <div ng-if="player.playing" class="controller-buttons">
+        <button ng-if="!player.audio.paused"
+              class="button button-icon icon ion-pause play-pause-stream"
+              ng-click="player.playPauseStream()">
+              </button>
+        <button ng-if="player.audio.paused"
+              class="button button-icon icon ion-play play-pause-stream"
+              ng-click="player.playPauseStream()">
+              </button>
+        <button class="button button-icon icon ion-stop play-stream"
+              ng-click="player.toggleStream()">
+              </button>
+      </div>
   </ion-side-menu>
 </ion-side-menus>

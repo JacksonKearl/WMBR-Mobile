@@ -3,18 +3,23 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
     <img src="img/wmbr_top.png"/>
 
-    <button ng-if="!player.playing"
+    <button ng-if="!(player.playing === 'http://wmbr.org/WMBR_live_128.m3u' && !player.audio.paused)"
             class="button button-icon icon ion-headphone play-stream"
-            ng-click="player.toggleStream()">
+            ng-click="player.toggleStream('http://wmbr.org/WMBR_live_128.m3u', 'Live Stream')">
             </button>
 
-    <button ng-if="player.playing"
-            class="button button-icon icon ion-pause play-stream pause-button"
-            ng-click="player.toggleStream()">
+    <button ng-if="player.playing === 'http://wmbr.org/WMBR_live_128.m3u' && !player.audio.paused"
+            class="button button-icon icon ion-stop play-stream"
+            ng-click="player.toggleStream('http://wmbr.org/WMBR_live_128.m3u')">
             </button>
 
   </div>
   <ion-content class="with-main-header">
-
+    <div class="info-box purple">
+      <div class="title-box">Coming Soon</div>
+      <div class="details-box">
+        Nothing here yet... maybe some day.
+      </div>
+    </div>
   </ion-content>
 </ion-view>
