@@ -1,0 +1,20 @@
+<ion-view hide-nav-bar="true" view-title="Home" ng-controller="HomeCtrl">
+  <div class="header">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
+    <img src="img/wmbr_top.png"/>
+
+    <button ng-if="!player.playing"
+            class="button button-icon icon ion-headphone play-stream"
+            ng-click="player.toggleStream()">
+            </button>
+
+    <button ng-if="player.playing"
+            class="button button-icon icon ion-pause play-stream pause-button"
+            ng-click="player.toggleStream()">
+            </button>
+
+  </div>
+  <ion-content class="with-main-header">
+
+  </ion-content>
+</ion-view>

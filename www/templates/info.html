@@ -1,0 +1,38 @@
+<ion-view hide-nav-bar="true" view-title="Home" ng-controller="HomeCtrl">
+  <div class="header">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round show-menu"></button>
+    <img src="img/wmbr_top.png"/>
+
+    <button ng-if="!player.playing"
+            class="button button-icon icon ion-headphone play-stream"
+            ng-click="player.toggleStream()">
+            </button>
+
+    <button ng-if="player.playing"
+            class="button button-icon icon ion-pause play-stream pause-button"
+            ng-click="player.toggleStream()">
+            </button>
+
+  </div>
+  <ion-content class="with-main-header">
+    <div class="info-box orange">
+      <div class="title-box">Welcome to WMBR</div>
+      <div class="details-box separated">
+        <p>WMBR is the MIT campus radio station. We broadcast on 88.1 FM between 20 and 24 hours per day, 365 days a year.</p>
+        <p>
+        Transmitting at 720 watts from the top of the Eastgate Building in Kendall Square in Cambridge, Massachusetts, our programming includes a wide range of music shows, public affairs programs, and eclectic audio entertainment.</p>
+      </div>
+    </div>
+    <div class="info-box teal">
+      <div class="title-box">MIT Students</div>
+      <div class="details-box separated">
+
+        <p><b>Are you a new MIT student who's interested in radio?</b></p>
+        <p>Or have you been at the 'Tute for a few years but you've never taken the time to explore the exciting world of radio broadcasting?</p>
+        <p>Now's a great time to get involved with WMBR!</p>
+        <p>To find out more about getting involved with WMBR, send email to <a href="mailto:membership@wmbr.org" target="_blank">membership@wmbr.org</a>. </p>
+        <p>In the meantime, be sure to check us out. We're at 88.1 MHz on the FM dial. Our programming tends to be a bit more eclectic than that of commercial radio stations higher up the dial. As you can see from our Program Schedule, we air quite a diverse set of programs, so we're sure you'll find something that you like.</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
